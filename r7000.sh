@@ -66,7 +66,7 @@ pacman -Sy --noconfirm archlinuxcn-keyring
 
 pacman -S --noconfirm yay
 yay -Sy --noconfirm pamac-aur firefox monaco v2raya google-chrome fcitx-qt4 fcitx-qt5 fcitx-configtool xsettingsd visual-studio-code-bin netease-cloud-music 
-dd if=/dev/zero of=/swapfile bs=1G count=32 status=progress 
+dd if=/dev/zero of=/swapfile bs=1G count=20 status=progress 
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
