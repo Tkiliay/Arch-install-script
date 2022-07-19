@@ -49,9 +49,7 @@ echo "arch" >> /etc/hostname
 echo root:' ' | chpasswd
 pacman -S --noconfirm xorg plasma dolphin kate kdialog efibootmgr keditbookmarks kfind khelpcenter kwrite ark gwenview grub nano git wget konsole networkmanager sddm os-prober ntfs-3g noto-fonts-cjk bluez bluez-utils pulseaudio-bluetooth sudo
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
-
 grub-mkconfig -o /boot/grub/grub.cfg
-
 useradd -m -G wheel toy
 echo toy:' ' | chpasswd
 sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
@@ -61,9 +59,6 @@ systemctl enable NetworkManager
 echo -e 'load-module module-bluetooth-policy\nload-module module-bluetooth-discover' >> /etc/pulse/system.pa
 #curl https://gitee.com/toyohama/arch_install/raw/master/archlinuxcnmirrorlist >> /etc/pacman.conf
 pacman -Sy --noconfirm archlinuxcn-keyring
-
-#rm -rf /etc/pacman.d/gnupg ; pacman-key --init ; pacman-key --populate archlinux ; pacman-key --populate archlinuxcn
-
 pacman -S --noconfirm yay
 yay -Sy --noconfirm pamac-aur firefox monaco v2raya google-chrome fcitx-qt4 fcitx-qt5 fcitx-configtool xsettingsd visual-studio-code-bin netease-cloud-music 
 dd if=/dev/zero of=/swapfile bs=1G count=20 status=progress 
