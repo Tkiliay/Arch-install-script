@@ -12,4 +12,4 @@ boot partition： /dev/nvme0n1p5
 
 system partition： /dev/nvme0n1p1
 
-set time zone：Asia Shanghai
+set time zone：Asia China Shanghai
