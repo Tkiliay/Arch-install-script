@@ -59,13 +59,13 @@ systemctl enable sddm
 systemctl enable bluetooth.service
 systemctl enable NetworkManager
 echo -e 'load-module module-bluetooth-policy\nload-module module-bluetooth-discover' >> /etc/pulse/system.pa
-curl https://gitee.com/toyohama/arch_install/raw/master/archlinuxcnmirrorlist >> /etc/pacman.conf
+#curl https://gitee.com/toyohama/arch_install/raw/master/archlinuxcnmirrorlist >> /etc/pacman.conf
 pacman -Sy --noconfirm archlinuxcn-keyring
 
 #rm -rf /etc/pacman.d/gnupg ; pacman-key --init ; pacman-key --populate archlinux ; pacman-key --populate archlinuxcn
 
 pacman -S --noconfirm yay
-yay -Sy --noconfirm pamac-aur firefox monaco v2raya google-chrome fcitx-qt4 fcitx-qt5 fcitx-configtool xsettingsd visual-studio-code-bin netease-cloud-music wps-office-cn ttf-wps-fonts wps-office-mui-zh-cn
+yay -Sy --noconfirm pamac-aur firefox monaco v2raya google-chrome fcitx-qt4 fcitx-qt5 fcitx-configtool xsettingsd visual-studio-code-bin netease-cloud-music 
 dd if=/dev/zero of=/swapfile bs=1G count=32 status=progress 
 chmod 600 /swapfile
 mkswap /swapfile
