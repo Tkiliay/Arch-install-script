@@ -53,7 +53,7 @@ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 useradd -m -G wheel toy
-echo zhsanymx:' ' | chpasswd
+echo toy:' ' | chpasswd
 sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
 systemctl enable sddm
 systemctl enable bluetooth.service
