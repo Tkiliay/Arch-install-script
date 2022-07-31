@@ -8,8 +8,8 @@ Default desktop：KDE
 
 install way：EFI
 
-boot partition： /dev/nvme0n1p5
+boot partition： /dev/nvme0n1p1
 
-system partition： /dev/nvme0n1p1
+system partition： /dev/nvme0n1p5
 
 set time zone：Asia China Shanghai
