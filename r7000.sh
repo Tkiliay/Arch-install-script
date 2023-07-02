@@ -11,9 +11,11 @@ setfont /usr/share/kbd/consolefonts/LatGrkCyr-12x22.psfu.gz
 # Ensure the system clock is accurate
 timedatectl set-ntp true
 
+# Set system partition
 mkfs.ext4 /dev/nvme0n1p5
 mount /dev/nvme0n1p5 /mnt
 
+# Set boot partition
 mkdir /mnt/boot
 mount /dev/nvme0n1p1 /mnt/boot
 
@@ -48,8 +50,12 @@ echo LANG=en_US.UTF-8 >> /etc/locale.conf
 echo "arch" >> /etc/hostname
 echo root:' ' | chpasswd
 pacman -S --noconfirm xorg plasma dolphin kate kdialog efibootmgr keditbookmarks kfind khelpcenter kwrite ark gwenview grub nano git wget konsole networkmanager sddm os-prober ntfs-3g noto-fonts-cjk bluez bluez-utils pulseaudio-bluetooth sudo
+
+# Install grub
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 grub-mkconfig -o /boot/grub/grub.cfg
+
+#Set user
 useradd -m -G wheel toy
 echo toy:' ' | chpasswd
 sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
@@ -57,10 +63,16 @@ systemctl enable sddm
 systemctl enable bluetooth.service
 systemctl enable NetworkManager
 echo -e 'load-module module-bluetooth-policy\nload-module module-bluetooth-discover' >> /etc/pulse/system.pa
+
+# Set archlinuxcn mirror
 #curl https://gitee.com/toyohama/arch_install/raw/master/archlinuxcnmirrorlist >> /etc/pacman.conf
 pacman -Sy --noconfirm archlinuxcn-keyring
+
+#Install some software
 pacman -S --noconfirm yay
 yay -Sy --noconfirm pamac-aur firefox monaco v2raya google-chrome fcitx-qt4 fcitx-qt5 fcitx-configtool xsettingsd visual-studio-code-bin netease-cloud-music 
+
+#Set swap (32G)
 dd if=/dev/zero of=/swapfile bs=1G count=20 status=progress 
 chmod 600 /swapfile
 mkswap /swapfile
